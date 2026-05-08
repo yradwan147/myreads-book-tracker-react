@@ -23,7 +23,12 @@ export default function Book({ book, shelf = "none", onMove }) {
               onChange={(e) => onMove(book, e.target.value)}
               aria-label={`move ${book.title}`}
             >
-              <option value="none" disabled>Move to…</option>
+              {/* Placeholder header. value="move" (NOT "none") so it doesn't
+                  collide with the real "None" option below — otherwise an
+                  unshelved book (shelf="none") binds to this disabled
+                  placeholder instead of the None option, which is the bug
+                  the reviewer flagged. */}
+              <option value="move" disabled>Move to…</option>
               <option value="currentlyReading">Currently Reading</option>
               <option value="wantToRead">Want to Read</option>
               <option value="read">Read</option>
